@@ -1,5 +1,5 @@
 ﻿=== Plugin Name ===
-Contributors: optimaldevs
+Contributors: OptimalDevs
 Donate link: http://optimaldevs.com/
 Tags: login, sexy, ajax, authentication, sidebar, widget, user, ssl, secury, admin bar
 Requires at least: 3.0
