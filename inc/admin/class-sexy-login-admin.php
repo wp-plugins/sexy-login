@@ -22,6 +22,7 @@ class Sexy_Login_Admin {
 		$captcha_enabled	= ( $sl_options['enable_captcha'] ) ? 'block' : 'none';
 		$login_custom_url	= ( $sl_options['redirect_login'] == 'current' ) ? 'none;' : 'block;' ;
 		$logout_custom_url	= ( $sl_options['redirect_logout'] == 'current' ) ? 'none;' : 'block;' ;
+		$uri 				= parse_url( get_option( 'siteurl' ) );
 		?>
 		
 		<div class="wrap">
@@ -35,39 +36,39 @@ class Sexy_Login_Admin {
 				<?php settings_fields( 'sl_options' ); ?>
 				
 				<p>
-					<table class="widefat" style="width:700px !important">
+					<table class="widefat" style="width:700px !important;">
 						<thead>
-							<th colspan="2"><?php esc_html_e( 'ReCaptcha' ); ?></th>
+							<th colspan="2"><?php echo esc_html( 'ReCaptcha' ); ?></th>
 						</thead>
 						<tbody>
 							<tr>
-								<td width="150px" >
+								<td style="width:150px;">
 									<label for="enable-captcha"><?php esc_html_e( 'Enable Captcha', 'sl-domain' ); ?></label>
 								</td>
 								<td>
 									<input type="checkbox" name="sl_options[enable_captcha]" id="enable-captcha" value="1" <?php checked( '1', $sl_options['enable_captcha'] ); ?> onClick="slShowCaptchaOptions( this.form );"/>
 								</td>
 							</tr>
-							<tr class="captcha-options" style="display: <?php esc_attr_e( $captcha_enabled ); ?>;">
+							<tr class="captcha-options" style="display: <?php echo esc_attr( $captcha_enabled ); ?>;">
 								<td colspan="2" >
-									<p><?php esc_html_e( 'The next keys are required before you are able to use ReCaptcha. You can get the keys in', 'sl-domain' ); ?> <a href="<?php $uri = parse_url( get_option( 'siteurl' ) ); echo recaptcha_get_signup_url( $uri['host'], 'sexy-login' );?>" ><?php echo recaptcha_get_signup_url( $uri['host'], 'sexy-login' ); ?></a>
-									<br /><?php esc_html_e( 'Note: the keys are not interchangeable.', 'sl-domain' ); ?></p>
+									<p><?php esc_html_e( 'The next keys are required before you are able to use ReCaptcha. You can get the keys in', 'sl-domain' ); ?> <a href="<?php echo recaptcha_get_signup_url( $uri['host'], 'sexy-login' );?>" ><?php echo recaptcha_get_signup_url( $uri['host'], 'sexy-login' ); ?></a></p>
+									<p><?php esc_html_e( 'Note: the keys are not interchangeable.', 'sl-domain' ); ?></p>
 								</td>
 							</tr>
-							<tr class="captcha-options" style="display: <?php esc_attr_e( $captcha_enabled ); ?>;">
-								<td width="150px">
+							<tr class="captcha-options" style="display: <?php echo esc_attr( $captcha_enabled ); ?>;">
+								<td style="width:150px;">
 									<label for="recaptcha_public_key"><?php esc_html_e( 'Public Key' ); ?></label>
 								</td>
 								<td>
-									<input type="text" name="sl_options[recaptcha_public_key]" id="recaptcha_public_key" size="90" value="<?php echo $sl_options['recaptcha_public_key']?>" />
+									<input type="text" name="sl_options[recaptcha_public_key]" id="recaptcha_public_key" size="90" value="<?php echo esc_attr( $sl_options['recaptcha_public_key'] )?>" />
 								</td>
 							</tr>
-							<tr class="captcha-options" style="display: <?php esc_attr_e( $captcha_enabled ); ?>;">
-								<td width="150px">
+							<tr class="captcha-options" style="display: <?php echo esc_attr( $captcha_enabled ); ?>;">
+								<td style="width:150px;">
 									<label for="recaptcha_private_key"><?php esc_html_e( 'Private Key' ); ?></label>
 								</td>
 								<td>
-									<input type="text" name="sl_options[recaptcha_private_key]" id="recaptcha_private_key" size="90" value="<?php echo $sl_options['recaptcha_private_key']?>" />
+									<input type="text" name="sl_options[recaptcha_private_key]" id="recaptcha_private_key" size="90" value="<?php echo esc_attr( $sl_options['recaptcha_private_key'] )?>" />
 								</td>
 							</tr>
 						</tbody>
@@ -75,28 +76,28 @@ class Sexy_Login_Admin {
 				</p>
 				
 				<p>
-					<table class="widefat" style="width:700px!important">
+					<table class="widefat" style="width:700px!important;">
 						<thead>
 							<th colspan="2"><?php esc_html_e( 'Sexy Login Wrap', 'sl-domain' ); ?></th>
 						</thead>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
 								<label for="wrap_width"><?php esc_html_e( 'Width' ); ?></label>
 							</td>
 							<td>
-								<input type="number" min="140" max="240" name="sl_options[wrap_width]" id="wrap_width" value="<?php esc_attr_e( $sl_options['wrap_width'] );?>" />
+								<input type="number" min="140" max="240" name="sl_options[wrap_width]" id="wrap_width" value="<?php echo esc_attr( $sl_options['wrap_width'] );?>" />
 							</td>
 						</tr>
 					</table>
 				</p>
 				
 				<p>
-					<table class="widefat" style="width:700px!important">
+					<table class="widefat" style="width:700px!important;">
 						<thead>
-							<th colspan="2"><?php esc_html_e( 'Avatar' ); ?></th>	
+							<th colspan="2"><?php esc_html_e( 'General Options', 'sl-domain' ); ?></th>
 						</thead>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
 								<label for="show_avatar"><?php esc_html_e( 'Show Avatar', 'sl-domain' ); ?></label>
 							</td>
 							<td >
@@ -105,23 +106,23 @@ class Sexy_Login_Admin {
 								
 						</tr>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
 								<label for="avatar_size"><?php esc_html_e( 'Avatar Size', 'sl-domain' ); ?></label>
 							</td>
 							<td>
-								<input type="number" min="1" max="220" name="sl_options[avatar_size]" id="avatar_size" value="<?php esc_attr_e( $sl_options['avatar_size'] );?>" />
+								<input type="number" min="1" max="220" name="sl_options[avatar_size]" id="avatar_size" value="<?php echo esc_attr( $sl_options['avatar_size'] );?>" />
 							</td>
 						</tr>
-					</table>
-				</p>
-				<p>
-				
-					<table class="widefat" style="width:700px!important">
-						<thead>
-							<th colspan="2"><?php esc_html_e( 'Buttons', 'sl-domain' ); ?></th>
-						</thead>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
+								<label for="show_nickname"><?php esc_html_e( 'Show Nickname', 'sl-domain' ); ?></label>
+							</td>
+							<td>
+								<input type="checkbox" name="sl_options[show_nickname]" id="show_nickname" value="1" <?php checked( '1', $sl_options['show_nickname'] ); ?> />
+							</td>
+						</tr>
+						<tr>
+							<td style="width:150px;">
 								<label for="show_dashboard"><?php esc_html_e( 'Show "Dashboard"', 'sl-domain' ); ?></label>
 							</td>
 							<td >
@@ -129,7 +130,7 @@ class Sexy_Login_Admin {
 							</td>
 						</tr>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
 								<label for="show_profile"><?php esc_html_e( 'Show "Edit My Profile"', 'sl-domain' ); ?></label>
 							</td>
 							<td>
@@ -139,12 +140,12 @@ class Sexy_Login_Admin {
 					</table>
 				</p>
 				<p>
-					<table class="widefat" style="width:700px!important">
+					<table class="widefat" style="width:700px!important;">
 						<thead>
 							<th colspan="3"><?php esc_html_e( 'Redirect', 'sl-domain' ); ?></th>
 						</thead>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
 								<label for="sl-redirect-login"><?php esc_html_e( 'Login redirect to', 'sl-domain' ); ?></label>
 							</td>
 							<td>
@@ -154,11 +155,11 @@ class Sexy_Login_Admin {
 								</select>
 							</td>
 							<td>
-								<input id="sl-redirect-login-url" style="display: <?php esc_attr_e( $login_custom_url ); ?>;" type="text" name="sl_options[redirect_login_url]" size="65" value="<?php echo $sl_options['redirect_login_url']?>" />
+								<input id="sl-redirect-login-url" style="display: <?php echo esc_attr( $login_custom_url ); ?>;" type="text" name="sl_options[redirect_login_url]" size="65" value="<?php echo $sl_options['redirect_login_url']?>" />
 							</td>
 						</tr>
 						<tr>
-							<td width="150px">
+							<td style="width:150px;">
 								<label for="sl-redirect-logout"><?php esc_html_e( 'Logout redirect to', 'sl-domain' ); ?></label>	
 							</td>
 							<td>
@@ -168,7 +169,7 @@ class Sexy_Login_Admin {
 								</select>
 							</td>
 							<td>
-								<input id="sl-redirect-logout-url" style="display: <?php esc_attr_e( $logout_custom_url ); ?>;" type="text" name="sl_options[redirect_logout_url]" size="65" value="<?php echo $sl_options['redirect_logout_url']?>" />
+								<input id="sl-redirect-logout-url" style="display: <?php echo esc_attr( $logout_custom_url ); ?>;" type="text" name="sl_options[redirect_logout_url]" size="65" value="<?php echo $sl_options['redirect_logout_url']?>" />
 							</td>
 						</tr>
 					</table>
@@ -187,6 +188,7 @@ class Sexy_Login_Admin {
 		$input['show_dashboard']		= ( 1 == $input['show_dashboard'] ? 1 : 0 );
 		$input['show_profile']			= ( 1 == $input['show_profile'] ? 1 : 0 );
 		$input['show_avatar']			= ( 1 == $input['show_avatar'] ? 1 : 0 );
+		$input['show_nickname']			= ( 1 == $input['show_nickname'] ? 1 : 0 );
 		$input['redirect_login']		=  esc_html( $input['redirect_login'] );
 		$input['redirect_logout']		=  esc_html( $input['redirect_logout'] );
 		$input['redirect_login_url']	=  esc_url( $input['redirect_login_url'] );
@@ -252,6 +254,15 @@ class Sexy_Login_Admin {
 			}
 
 		} // END < 2.0
+		
+		if ( version_compare( $current_version, '2.1', '<' ) ) {
+			
+			$options					= get_option( 'sl_options' );
+			$options['show_nickname']	= TRUE;
+	
+			update_option( 'sl_options', $options );
+		
+		} // END < 2.1
 
 		$config				= get_option( 'sl_config' );
 		$config['version']	= SL_VERSION;

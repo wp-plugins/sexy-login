@@ -4,7 +4,7 @@ Donate link: http://optimaldevs.com/
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -57,8 +57,11 @@ Check that you've correctly entered both private and public keys in the "Sexy Lo
 
 == Changelog ==
 
-= 1.0 =
-* Initial release.
+= 2.1 =
+* Added Show Nickname option.
+* Fixed Show Avatar issue.
+* Fixed some translations.
+* Fixed error wrap width.
 
 = 2.0 =
 * Added Register Form with Ajax.
@@ -71,3 +74,6 @@ Check that you've correctly entered both private and public keys in the "Sexy Lo
 * Remove option to customize the style.
 * Added option to resize avatar and wrap div width.
 * Added Uninstall.php file.
+
+= 1.0 =
+* Initial release.

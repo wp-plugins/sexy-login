@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sexy Login 1.0\n"
-"POT-Creation-Date: 2013-02-22 19:03+0100\n"
-"PO-Revision-Date: 2013-02-22 19:04+0100\n"
+"POT-Creation-Date: 2013-02-25 11:48+0100\n"
+"PO-Revision-Date: 2013-02-25 12:42+0100\n"
 "Last-Translator: \n"
 "Language-Team: optimaldevs.com <info@optimaldevs.com>\n"
 "Language: Spanish\n"
@@ -134,53 +134,50 @@ msgstr ""
 msgid "Check your e-mail for your new password."
 msgstr "Recibirás una nueva contraseña, comprueba tu correo."
 
-#: inc/class-sexy-login-widget.php:72
-#, fuzzy
+#: inc/class-sexy-login-widget.php:77
 msgid "Log in"
-msgstr "Entrar"
+msgstr ""
 
-#: inc/class-sexy-login-widget.php:75 inc/class-sexy-login-widget.php:95
+#: inc/class-sexy-login-widget.php:80 inc/class-sexy-login-widget.php:100
 msgid "Register"
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:86 inc/class-sexy-login-widget.php:87
-#: inc/class-sexy-login-widget.php:127 inc/class-sexy-login-widget.php:128
+#: inc/class-sexy-login-widget.php:91 inc/class-sexy-login-widget.php:92
+#: inc/class-sexy-login-widget.php:132 inc/class-sexy-login-widget.php:133
 msgid "Username"
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:90 inc/class-sexy-login-widget.php:91
+#: inc/class-sexy-login-widget.php:95 inc/class-sexy-login-widget.php:96
 msgid "E-mail"
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:106 inc/class-sexy-login-widget.php:145
+#: inc/class-sexy-login-widget.php:111 inc/class-sexy-login-widget.php:150
 msgid "Lost your password?"
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:108
+#: inc/class-sexy-login-widget.php:113
 msgid ""
 "Please enter your username or email address. You will receive a link to "
 "create a new password via email."
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:112
-#, fuzzy
+#: inc/class-sexy-login-widget.php:117
 msgid "Username or E-mail"
-msgstr "Nombre de Usuario o email"
+msgstr ""
 
-#: inc/class-sexy-login-widget.php:115
-#, fuzzy
+#: inc/class-sexy-login-widget.php:120
 msgid "Get New Password"
-msgstr "Contraseña"
+msgstr ""
 
-#: inc/class-sexy-login-widget.php:131 inc/class-sexy-login-widget.php:132
+#: inc/class-sexy-login-widget.php:136 inc/class-sexy-login-widget.php:137
 msgid "Password"
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:137
+#: inc/class-sexy-login-widget.php:142
 msgid "Log In"
 msgstr ""
 
-#: inc/class-sexy-login-widget.php:174
+#: inc/class-sexy-login-widget.php:179
 msgid "Title"
 msgstr ""
 
@@ -188,15 +185,11 @@ msgstr ""
 msgid "Sexy Login Options"
 msgstr "Opciones Sexy Login"
 
-#: inc/admin/class-sexy-login-admin.php:40
-msgid "ReCaptcha"
-msgstr "Recaptcha"
-
-#: inc/admin/class-sexy-login-admin.php:45
+#: inc/admin/class-sexy-login-admin.php:46
 msgid "Enable Captcha"
 msgstr "Activar Captcha"
 
-#: inc/admin/class-sexy-login-admin.php:53
+#: inc/admin/class-sexy-login-admin.php:54
 msgid ""
 "The next keys are required before you are able to use ReCaptcha. You can get "
 "the keys in"
@@ -204,79 +197,85 @@ msgstr ""
 "Las claves siguientes son necesarias para que puedas usar ReCaptcha. Las "
 "puedes obtener en"
 
-#: inc/admin/class-sexy-login-admin.php:54
+#: inc/admin/class-sexy-login-admin.php:55
 msgid "Note: the keys are not interchangeable."
 msgstr "Nota: las claves no son intercambiables."
 
-#: inc/admin/class-sexy-login-admin.php:59
+#: inc/admin/class-sexy-login-admin.php:60
 msgid "Public Key"
 msgstr ""
 
-#: inc/admin/class-sexy-login-admin.php:67
+#: inc/admin/class-sexy-login-admin.php:68
 msgid "Private Key"
 msgstr ""
 
-#: inc/admin/class-sexy-login-admin.php:80
+#: inc/admin/class-sexy-login-admin.php:81
 msgid "Sexy Login Wrap"
 msgstr "Contenedor de Sexy Login"
 
-#: inc/admin/class-sexy-login-admin.php:84
+#: inc/admin/class-sexy-login-admin.php:85
 msgid "Width"
 msgstr ""
 
-#: inc/admin/class-sexy-login-admin.php:96
-msgid "Avatar"
-msgstr ""
+#: inc/admin/class-sexy-login-admin.php:98
+msgid "General Options"
+msgstr "Opciones Generales"
 
-#: inc/admin/class-sexy-login-admin.php:100
+#: inc/admin/class-sexy-login-admin.php:102
 msgid "Show Avatar"
 msgstr "Mostrar Avatar"
 
-#: inc/admin/class-sexy-login-admin.php:109
+#: inc/admin/class-sexy-login-admin.php:111
 msgid "Avatar Size"
 msgstr "Tamaño del Avatar"
 
-#: inc/admin/class-sexy-login-admin.php:121
-msgid "Buttons"
-msgstr "Botones"
+#: inc/admin/class-sexy-login-admin.php:119
+msgid "Show Nickname"
+msgstr "Mostrar Alias"
 
-#: inc/admin/class-sexy-login-admin.php:125
+#: inc/admin/class-sexy-login-admin.php:127
 msgid "Show \"Dashboard\""
 msgstr "Mostrar \"Escritorio\""
 
-#: inc/admin/class-sexy-login-admin.php:133
+#: inc/admin/class-sexy-login-admin.php:135
 msgid "Show \"Edit My Profile\""
 msgstr "Mostrar \"Editar Mi Perfil\""
 
-#: inc/admin/class-sexy-login-admin.php:144
+#: inc/admin/class-sexy-login-admin.php:146
 msgid "Redirect"
 msgstr "Redirección"
 
-#: inc/admin/class-sexy-login-admin.php:148
+#: inc/admin/class-sexy-login-admin.php:150
 msgid "Login redirect to"
 msgstr "Redirección al loguearse"
 
-#: inc/admin/class-sexy-login-admin.php:152
-#: inc/admin/class-sexy-login-admin.php:166
+#: inc/admin/class-sexy-login-admin.php:154
+#: inc/admin/class-sexy-login-admin.php:168
 msgid "Current URL"
 msgstr "URL Actual"
 
-#: inc/admin/class-sexy-login-admin.php:153
-#: inc/admin/class-sexy-login-admin.php:167
+#: inc/admin/class-sexy-login-admin.php:155
+#: inc/admin/class-sexy-login-admin.php:169
 msgid "Custom URL"
 msgstr "URL Personalizada"
 
-#: inc/admin/class-sexy-login-admin.php:162
+#: inc/admin/class-sexy-login-admin.php:164
 msgid "Logout redirect to"
 msgstr "Redirección al  cerrar sesión"
 
-#: inc/admin/class-sexy-login-admin.php:177
+#: inc/admin/class-sexy-login-admin.php:179
 msgid "Save Changes"
 msgstr ""
 
-#: inc/admin/class-sexy-login-admin.php:203
+#: inc/admin/class-sexy-login-admin.php:206
 msgid "ReCaptcha was disabled because you have not entered any key"
 msgstr "ReCaptcha ha sido desactivado porque no has introducido las key."
+
+#~ msgid "Buttons"
+#~ msgstr "Botones"
+
+#~ msgid "ReCaptcha"
+#~ msgstr "Recaptcha"
 
 #~ msgid "Your email"
 #~ msgstr "Tu email"
@@ -314,6 +313,3 @@ msgstr "ReCaptcha ha sido desactivado porque no has introducido las key."
 
 #~ msgid "Select Name to Show"
 #~ msgstr "Elige el Nombre a Mostrar"
-
-#~ msgid "Nickname"
-#~ msgstr "Alias"

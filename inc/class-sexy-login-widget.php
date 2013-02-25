@@ -20,7 +20,8 @@ class Sexy_Login_Widget extends WP_Widget {
 		
 		$title			= empty( $instance['title'] ) ? ' ' : apply_filters( 'widget_title', $instance['title'] );
 		$sl_options		= get_option( 'sl_options' );
-
+		$error_width	= $sl_options['wrap_width'] - 20;
+		
 		echo $before_widget;
 				
 		if ( ! empty( $title ) )
@@ -28,9 +29,9 @@ class Sexy_Login_Widget extends WP_Widget {
 		
 		?>
 		
-		<div id="sexy-login-show-error" style="max-width: <?php esc_attr_e( $sl_options['wrap_width'] ); ?>px;"></div>
+		<div id="sexy-login-show-error" style="max-width: <?php echo esc_attr( $error_width ); ?>px;"></div>
    
-		<div id="sexy-login-wrap" style="max-width: <?php esc_attr_e( $sl_options['wrap_width'] ); ?>px;">
+		<div id="sexy-login-wrap" style="max-width: <?php echo esc_attr( $sl_options['wrap_width'] ); ?>px;">
 			
 		<?php
 		
@@ -51,9 +52,13 @@ class Sexy_Login_Widget extends WP_Widget {
 			?> 
 			<div id="sexy-login-user" > 
 				<?php
+					
+				if ( $sl_options['show_avatar'] ) 	
+					echo get_avatar( $current_user->ID, $sl_options['avatar_size'] );
 				
-				echo get_avatar( $current_user->ID, $sl_options['avatar_size'] );
-				
+				if ( $sl_options['show_nickname'] ) 
+					echo '<h1>' . $current_user->nickname . '</h1>';
+					
 				foreach ( $buttons as $text => $href ) {
 					echo '<a href="' . esc_attr( $href ) . '">' . esc_html__( $text ) . '</a>';
 				}
@@ -137,7 +142,7 @@ class Sexy_Login_Widget extends WP_Widget {
 						<input type="submit" name="wp-submit" id="wp-submit" class="submit-button" value="<?php esc_attr_e( 'Log In' ); ?>">
 						
 						<input type="hidden" name="rememberme" id="rememberme" value="forever" />
-						<input type="hidden" name="redirect_to" value="<?php esc_attr_e( $redirect_to ); ?>" />
+						<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
 						<?php wp_nonce_field( 'nonce', SL_NONCE_SECURITY ); ?>
 						
 					</form>
@@ -172,7 +177,7 @@ class Sexy_Login_Widget extends WP_Widget {
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title' ); ?>: 
-				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php esc_attr_e( $title ); ?>" />
+				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</label>
 		</p>
 		<?php

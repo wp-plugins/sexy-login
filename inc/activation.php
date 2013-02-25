@@ -20,6 +20,7 @@ function sl_configure_database() {
 		'show_dashboard'		=> TRUE,
 		'show_profile'			=> TRUE,
 		'show_avatar'			=> TRUE,
+		'show_nickname'			=> TRUE,
 		'avatar_size'			=> 220,
 		'wrap_width'			=> 240,
 		'redirect_login'		=> 'current',
