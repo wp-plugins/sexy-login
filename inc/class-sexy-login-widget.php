@@ -67,44 +67,53 @@ class Sexy_Login_Widget extends WP_Widget {
 			
 		} else {
 		
-			$attempts		= new Sexy_Login_Attempts();
-			$login_captcha	= ( $sl_options['enable_captcha'] && $attempts->get_attempts() >= SL_LOGIN_ATTEMPTS ) ? 'block' : 'none';
-			$redirect_to	= ( $sl_options['redirect_login'] == 'custom' ) ? $sl_options['redirect_login_url'] : $this->current_url();
-			$can_register	= get_option('users_can_register');
+			$attempts			= new Sexy_Login_Attempts();
+			$login_captcha		= ( $sl_options['enable_captcha'] && $attempts->get_attempts() >= SL_LOGIN_ATTEMPTS ) ? 'block' : 'none';
+			$redirect_to		= ( $sl_options['redirect_login'] == 'custom' ) ? $sl_options['redirect_login_url'] : $this->current_url();
+			$can_register		= get_option('users_can_register');
+			$show_registration	= $sl_options['registration_enabled'];
+			$show_lostpwd		= $sl_options['lostpwd_enabled'];
+			$login_tab_width	= ( ! $can_register || ! $show_registration ) ? '100' : '50';
 			?>
 			<div id="sexy-login-tabs">
 			
-				<a class="sexy-login-tab selected" name="sl-tab-login" href="#" <?php if ( ! $can_register ) echo 'style="width: 100%;"'; ?> ><?php esc_html_e( 'Log in' ) ?></a>
+				<a class="sexy-login-tab selected" name="sl-tab-login" href="#" style="width: <?php echo esc_attr( $login_tab_width ); ?>%;" ><?php esc_html_e( 'Log in' ) ?></a>
 
-				<?php if ( $can_register ): ?> 
-					<a class="sexy-login-tab" style="border-left: 1px solid #ccc; margin-left: -1px;" name="sl-tab-register" href="<?php echo esc_url( site_url( 'wp-login.php?action=register' ) ); ?>" ><?php esc_html_e( 'Register' ) ?></a>
+				<?php if ( $can_register && $show_registration ): ?> 
+					<a class="sexy-login-tab" style="border-left: 1px solid #ccc; margin-left: -1px;" name="sl-tab-registration" href="<?php echo esc_url( site_url( 'wp-login.php?action=register' ) ); ?>" ><?php esc_html_e( 'Register' ) ?></a>
 				<?php endif;?>
 				
 			</div>
 			
 			<div id="sexy-login-content-tab">
-
-				<div id="sexy-login-register-form" class="sexy-login-form-wrap">
+			
+				<?php if ( $can_register && $show_registration ): ?> 
+				
+				<div id="sexy-login-registration-form" class="sexy-login-form-wrap">
 					
-					<form id="sl-register-form" action="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" method="post">
+					<form id="sl-registration-form" action="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" method="post">
 						<p>
-							<!--[if IE ]><label for="user_login"><?php esc_html_e( 'Username' ); ?>: </label><![endif]-->
-							<input type="text" name="user_login" size="20" id="user_login" placeholder="<?php esc_attr_e( 'Username' ); ?>"  tabindex="1"/>
+							<!--[if lte IE 9]><label for="sl-first-input-registration"><?php esc_html_e( 'Username' ); ?>: </label><![endif]-->
+							<input type="text" name="user_login" size="20" class="sl-input" id="sl-first-input-registration" placeholder="<?php esc_attr_e( 'Username' ); ?>"  tabindex="421" required/>
 						</p>
 						<p>
-							<!--[if IE ]><label for="user_email"><?php esc_html_e( 'E-mail' ); ?>: </label><![endif]-->
-							<input type="text" name="user_email" size="25" id="user_email" placeholder="<?php esc_attr_e( 'E-mail' ); ?>"  tabindex="2"/>
+							<!--[if lte IE 9]><label for="user_email"><?php esc_html_e( 'E-mail' ); ?>: </label><![endif]-->
+							<input type="email" name="user_email" class="sl-input" id="sl-user-email" size="25" placeholder="<?php esc_attr_e( 'E-mail' ); ?>"  tabindex="422" required/>
 						</p>
 						<p>
-							<div id="sexy-register-recaptcha" class="sexy-div-captcha" style="display: <?php echo ( $sl_options['enable_captcha'] ) ? esc_attr( 'block' ) : esc_attr( 'none' );?>;"></div>
-							<input type="submit" name="user-submit" value="<?php esc_html_e( 'Register' ); ?>" />
-							<?php wp_nonce_field( 'nonce', SL_NONCE_SECURITY ); ?>
+							<div id="sexy-registration-recaptcha" class="sexy-div-captcha" style="display: <?php echo ( $sl_options['enable_captcha'] ) ? esc_attr( 'block' ) : esc_attr( 'none' );?>;"></div>
+							<input type="submit" name="user-submit" value="<?php esc_attr_e( 'Register' ); ?>"  tabindex="424"/>
+							<?php wp_nonce_field( SL_NONCE_SECURITY, 'nonce'  ); ?>
 							<input type="hidden" name="url" value="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" />
-							<input type="hidden" name="redirect_to" value="" />
+							<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
 						</p>
 					</form>
 					
 				</div>
+				
+				<?php endif;?>
+				
+				<?php if ( $show_lostpwd ): ?>
 				
 				<div id="sexy-login-lostpwd-form" class="sexy-login-form-wrap">
 				
@@ -114,40 +123,44 @@ class Sexy_Login_Widget extends WP_Widget {
 					
 					<form id="sl-lostpwd-form" method="post" action="<?php echo site_url( 'wp-login.php?action=lostpassword', 'login_post' ) ?>">
 						<p>
-							<input type="text" name="user_login" size="20" id="user_login" placeholder="<?php esc_attr_e( 'Username or E-mail' ); ?>" />
+							<input type="text" name="user_login" size="20" class="sl-input" id="sl-first-input-lostpwd" placeholder="<?php esc_attr_e( 'Username or E-mail' ); ?>" required  tabindex="421"/>
 						</p>
 						<p>
-							<input type="submit" name="user-submit" value="<?php esc_attr_e( 'Get New Password' ); ?>"/>
-							<?php wp_nonce_field( 'nonce', SL_NONCE_SECURITY ); ?>
-							<input type="hidden" name="redirect_to" value="" />
+							<input type="submit" name="user-submit" value="<?php esc_attr_e( 'Get New Password' ); ?>" tabindex="422"/>
+							<?php wp_nonce_field( SL_NONCE_SECURITY, 'nonce' ); ?>
+							<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
 						<p>
 					</form>
 					
 				</div>
 				
+				<?php endif;?>
+				
 				<div id="sexy-login-login-form" class="sexy-login-form-wrap" style="display: block;">
 				
 					<form id="sl-login-form" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 						<p>
-							<!--[if IE ]><label for="user_login"><?php esc_html_e( 'Username' ); ?>:</label><![endif]-->
-							<input type="text" name="log" id="user_login" size="20" placeholder="<?php esc_attr_e( 'Username' ); ?>"  tabindex="1" />
+							<!--[if lte IE 9]><label for="sl-first-input-login"><?php esc_html_e( 'Username' ); ?>:</label><![endif]-->
+							<input type="text" name="log" id="sl-first-input-login" size="20" placeholder="<?php esc_attr_e( 'Username' ); ?>"  tabindex="421" required />
 						</p>
 						<p>
-							<!--[if IE ]><label for="user_pass"><?php esc_html_e( 'Password' ); ?>:</label><![endif]-->
-							<input type="password" name="pwd" id="user_pass" size="20" placeholder="<?php esc_attr_e( 'Password' ); ?>" tabindex="2" />
+							<!--[if lte IE 9]><label for="sl-user-pass-login"><?php esc_html_e( 'Password' ); ?>:</label><![endif]-->
+							<input type="password" name="pwd" id="sl-user-pass-login" size="20" placeholder="<?php esc_attr_e( 'Password' ); ?>" tabindex="422" required />
 						</p>
 						
 						<div id="sexy-login-recaptcha" class="sexy-div-captcha" style="display: <?php echo esc_attr( $login_captcha ); ?>;"></div>
 						
-						<input type="submit" name="wp-submit" id="wp-submit" class="submit-button" value="<?php esc_attr_e( 'Log In' ); ?>">
+						<input type="submit" name="wp-submit" class="submit-button" value="<?php esc_attr_e( 'Log In' ); ?>" tabindex="424">
 						
-						<input type="hidden" name="rememberme" id="rememberme" value="forever" />
+						<input type="hidden" name="rememberme" value="forever" />
 						<input type="hidden" name="redirect_to" value="<?php echo esc_attr( $redirect_to ); ?>" />
-						<?php wp_nonce_field( 'nonce', SL_NONCE_SECURITY ); ?>
+						<?php wp_nonce_field( SL_NONCE_SECURITY, 'nonce' ); ?>
 						
 					</form>
 				
-					<a name="sl-tab-lostpwd" href="<?php echo esc_url( site_url( 'wp-login.php?action=lostpassword', 'login_post' ) ); ?>" title="<?php esc_attr_e( 'Lost your password?' ); ?>" ><?php esc_html_e( 'Lost your password?' ) ?></a>
+					<?php if ( $show_lostpwd ): ?>
+						<a name="sl-tab-lostpwd" href="<?php echo esc_url( site_url( 'wp-login.php?action=lostpassword', 'login_post' ) ); ?>" title="<?php esc_attr_e( 'Lost your password?' ); ?>" tabindex="425" ><?php esc_html_e( 'Lost your password?' ) ?></a>
+					<?php endif;?>
 					
 				</div> 
 			

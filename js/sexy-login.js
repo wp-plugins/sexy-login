@@ -10,7 +10,7 @@ function slRecaptchaCreate( tab ) {
 				'<a href="javascript:Recaptcha.reload()">' + sexy_loginl_data.captcha_get + '</a>' +
 			'</div>' +
 			'<!--[if IE ]><label for="recaptcha_response_field">' + sexy_loginl_data.captcha_enter + ':</label><![endif]-->' +
-			'<input type="text" id="recaptcha_response_field" tabindex="3" name="recaptcha_response_field" placeholder="' + sexy_loginl_data.captcha_enter + '..." />' + 
+			'<input type="text" id="recaptcha_response_field" tabindex="423" name="recaptcha_response_field" placeholder="' + sexy_loginl_data.captcha_enter + '..." required/>' + 
 		'</div>'
 	);
 	
@@ -40,6 +40,9 @@ function slTabChange( tab ) {
 	
 	if ( tab != 'lostpwd' &&  jQuery( '#sexy-' + tab + '-recaptcha' ).css( 'display' ) == 'block' )
 		slRecaptchaCreate( tab );
+		
+	jQuery( '#sl-first-input-' + tab ).focus();
+	jQuery( '.sl-input' ).val('');
 	
 }
 
@@ -89,10 +92,10 @@ jQuery(	function() {
 		
 	});
 	
-	jQuery('a[name=sl-tab-register]').click( function(e) {
+	jQuery('a[name=sl-tab-registration]').click( function(e) {
 		
 		e.preventDefault();
-		slTabChange( 'register' );
+		slTabChange( 'registration' );
 		
 	});
 
@@ -155,14 +158,14 @@ jQuery(	function() {
 	
 	}); // END sl-login-form submit.
 	
-	jQuery('.sexy_login_widget #sl-register-form').submit( function( e ) {
+	jQuery('.sexy_login_widget #sl-registration-form').submit( function( e ) {
 				
 		e.preventDefault();
 		
 		jQuery.ajax({
 		
 			url:		sexy_loginl_data.ajaxurl,
-			data:		jQuery( this ).serialize() + '&action=sexy_register_hook',
+			data:		jQuery( this ).serialize() + '&action=sexy_registration_hook',
 			type:		'POST',
 			dataType:	'json',
 			
@@ -187,7 +190,7 @@ jQuery(	function() {
 					
 					errorDiv.html(result.error);
 					
-					if ( jQuery( '#sexy-register-recaptcha' ).css( 'display' ) == 'block' )	
+					if ( jQuery( '#sexy-registration-recaptcha' ).css( 'display' ) == 'block' )	
 						Recaptcha.reload();
 						
 					errorDiv.slideDown('fast');	
@@ -204,7 +207,7 @@ jQuery(	function() {
 			
 		});
 	
-	}); // END sl-register-form
+	}); // END sl-registration-form
 	
 	jQuery('.sexy_login_widget #sl-lostpwd-form').submit( function( e ) {
 				

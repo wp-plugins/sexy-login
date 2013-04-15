@@ -42,7 +42,7 @@
 
 #sexy-login-wrap #sexy-login-tabs {
 	width: 100%;
-	margin: 0 0 5px;
+	margin: 0;
 	border-bottom: 1px solid #c6c6c6;
 	height: auto;
 	overflow: hidden;
@@ -97,7 +97,7 @@
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-#sexy-login-content-tab input[type="text"], #sexy-login-content-tab input[type="password"] {
+#sexy-login-content-tab input[type="text"], #sexy-login-content-tab input[type="password"], #sexy-login-content-tab input[type="email"] {
 	color: #555;
 	font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 200;
@@ -112,7 +112,7 @@
 	background-color: #fff;
 }
 
-#sexy-login-content-tab input[type="text"]:hover, #sexy-login-content-tab input[type="password"]:hover {
+#sexy-login-content-tab input[type="text"]:hover, #sexy-login-content-tab input[type="password"]:hover, #sexy-login-content-tab input[type="email"]:hover {
 	border: 1px solid #999;
 }
 
@@ -126,7 +126,6 @@
 
 #sexy-login-content-tab input[type="submit"], #sexy-login-user a, #sexy-recaptcha-container a {
 	width: 100%;
-	margin-bottom: 4px;
 	text-align: center;
     text-decoration: none;
     color: #666; 

@@ -2,8 +2,8 @@
 /*
 Plugin Name: Sexy Login
 Plugin URI: http://wordpress.org/extend/plugins/sexy-login/
-Description: The sexiest widget login for Wordpress!
-Version: 2.1
+Description: The sexiest login widget for Wordpress!
+Version: 2.2
 Author: OptimalDevs
 Author URI: http://optimaldevs.com/
 */
@@ -19,8 +19,8 @@ function sexy_login_init() {
 
 	load_plugin_textdomain( 'sl-domain', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	
-	require_once( 'inc/class-sexy-login-attempts.php' );
-	require_once( 'inc/class-sexy-login-widget.php' );
+	sl_import_class( 'Sexy_Login_Attempts', 'inc/class-sexy-login-attempts.php' );
+	sl_import_class( 'Sexy_Login_Widget', 'inc/class-sexy-login-widget.php' );
 			
 	register_widget( 'Sexy_Login_Widget' );	
 		
@@ -33,8 +33,8 @@ function sexy_login_init() {
 			add_action( 'wp_ajax_sexy_login_hook', 'sexy_login_ajax' );
 			add_action( 'wp_ajax_nopriv_sexy_login_hook', 'sexy_login_ajax' );
 			
-			add_action( 'wp_ajax_sexy_register_hook', 'sexy_register_ajax' );
-			add_action( 'wp_ajax_nopriv_sexy_register_hook', 'sexy_register_ajax' );
+			add_action( 'wp_ajax_sexy_registration_hook', 'sexy_registration_ajax' );
+			add_action( 'wp_ajax_nopriv_sexy_registration_hook', 'sexy_registration_ajax' );
 			
 			add_action( 'wp_ajax_sexy_lostpwd_hook', 'sexy_lostpwd_ajax' );
 			add_action( 'wp_ajax_nopriv_sexy_lostpwd_hook', 'sexy_lostpwd_ajax' );
@@ -96,19 +96,32 @@ function sexy_login_init() {
     } // END is_active_widget()
 	
 	if ( is_admin() ) {
-	
-		wp_register_script( 'sl-admin-js', plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), '1.0' );
-		wp_enqueue_script( 'sl-admin-js' );
 		
-		require_once( 'inc/admin/class-sexy-login-admin.php' );
+		sl_import_class( 'Sexy_Login_Admin', 'inc/admin/class-sexy-login-admin.php' );
 		
 		if ( ! function_exists( 'recaptcha_get_html' ) )
 			require_once( 'inc/lib/recaptchalib.php' );
 			
 		$admin_init	= new Sexy_Login_Admin();
-		$admin_init->upgrade();
+		
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'sexy_login_settings_link' );
 		
 	} // END is_admin()
+	
+}
+
+function sexy_login_settings_link( $links ) {
+
+	$settings_link	= '<a href="options-general.php?page=sl_options">' . esc_html__( 'Settings' ) . '</a>'; 
+	array_unshift( $links, $settings_link ); 
+	return $links;
+  
+}
+
+function sl_import_class( $class, $file ) {
+	
+	if ( ! class_exists( $class ) )
+		require_once( $file );
 	
 }
 ?>

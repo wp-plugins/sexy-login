@@ -1,10 +1,10 @@
 ﻿=== Plugin Name ===
-Contributors: OptimalDevs
+Contributors: OptimalDevs, Alejandro Galvez, Andy Hernandez
 Donate link: http://optimaldevs.com/
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,7 +32,8 @@ Features:
 * It's responsive!
 * Languages: the same of your WordPress! (It’s multi-language). English or spanish in back-end.
 
-[Try Demo](http://optimaldevs.com/demo/ "Try Sexy Login demo.") 
+[Try Demo](http://optimaldevs.com/demo/ "Try Sexy Login demo.")
+
 Note: A new pro version is coming stay tune in http://optimaldevs.com/
 
 == Installation ==
@@ -55,7 +56,22 @@ Yes.
 
 Check that you've correctly entered both private and public keys in the "Sexy Login" plugin options.
 
+= I have problems with the Sexy Login redirects and i use a cache system plugin.  =
+
+That's one of the problems of cache systems. We can't modify third party plugins.
+
 == Changelog ==
+
+= 2.2 =
+* Registration form is optional.
+* Lost Password form is optional.
+* Added verification of form fields with HTML5.
+* Improved a few details of style.
+* New design on admin side.
+* Improved the focus on forms.
+* Removed maximum limit for the width of the widget.
+* Removed maximum and minimum limit for the width of the Avatar.
+* Improved SSL (Special thanks to jason102178).
 
 = 2.1 =
 * Added Show Nickname option.

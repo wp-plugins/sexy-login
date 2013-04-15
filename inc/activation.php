@@ -26,7 +26,9 @@ function sl_configure_database() {
 		'redirect_login'		=> 'current',
 		'redirect_login_url'	=> '',
 		'redirect_logout'		=> 'current',
-		'redirect_logout_url'	=> ''
+		'redirect_logout_url'	=> '',
+		'registration_enabled'	=> TRUE,
+		'lostpwd_enabled'		=> TRUE
 	);
 	$old_options	= get_option( 'sl_options' );
 	$new_options	= wp_parse_args( $old_options, $defaults );

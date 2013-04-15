@@ -1,7 +1,7 @@
 <?php
 function sexy_login_ajax() {
 
-	check_ajax_referer(  'nonce', SL_NONCE_SECURITY );
+	check_ajax_referer( SL_NONCE_SECURITY, 'nonce' );
 	
 	$redirect_to	= $_REQUEST['redirect_to'];
 	$sl_options		= get_option( 'sl_options' );
@@ -29,7 +29,7 @@ function sexy_login_ajax() {
 		$creds['user_login']	= $_REQUEST['log'];
 		$creds['user_password']	= $_REQUEST['pwd'];
 		$creds['remember']		= ( isset( $_REQUEST['rememberme'] ) ) ? $_REQUEST['rememberme'] : false;
-		$secure_cookie			= ( force_ssl_admin() ) ? true : false;
+		$secure_cookie			= ( force_ssl_admin() || ( 0 === strpos( $redirect_to, 'https' ) ) ) ? true : false;
 		
 		if ( ! $secure_cookie ) {
 			$user_name = sanitize_user( $_REQUEST['log'] );
@@ -41,9 +41,6 @@ function sexy_login_ajax() {
 			}
 		}
 		
-		if ( !$secure_cookie && is_ssl() && force_ssl_login() && !force_ssl_admin() && ( 0 !== strpos($redirect_to, 'https') ) && ( 0 === strpos($redirect_to, 'http') ) )
-			$secure_cookie = false;
-		
 		$login = wp_signon($creds, $secure_cookie);
 			
 		if ( ! is_wp_error( $login ) ){
@@ -53,8 +50,8 @@ function sexy_login_ajax() {
 			$attempts->delete_attempts();
 			
 		} else {
-		
-			$result['error']	= ( $login->errors ) ? $login->get_error_message() : '<strong>ERROR</strong>: ' . esc_html__( 'Please enter your username and password to login.', 'sl-domain' );
+			$to_search = array( '?', '¿' );
+			$result['error']	= ( $login->errors ) ? str_replace( $to_search, '', eregi_replace( "<a[^>]*>.*</a>", '', $login->get_error_message() ) ) : '<strong>ERROR</strong>: ' . esc_html__( 'Please enter your username and password to login.', 'sl-domain' );
 			$result['captcha']	= ( $sl_options['enable_captcha'] && $attempts->update_attempts() >= SL_LOGIN_ATTEMPTS ) ? true : false;
 		
 		}
@@ -69,9 +66,9 @@ function sexy_login_ajax() {
 	
 }
 
-function sexy_register_ajax() {
+function sexy_registration_ajax() {
 	
-	check_ajax_referer(  'nonce', SL_NONCE_SECURITY );
+	check_ajax_referer( SL_NONCE_SECURITY, 'nonce' );
 	
 	$result			= array();
 	$sl_options		= get_option( 'sl_options' );
@@ -158,7 +155,7 @@ function sexy_register_ajax() {
 
 function sexy_lostpwd_ajax() {
 
-	check_ajax_referer( 'nonce', SL_NONCE_SECURITY );
+	check_ajax_referer( SL_NONCE_SECURITY, 'nonce' );
 	
 	$result		= array();
 	
