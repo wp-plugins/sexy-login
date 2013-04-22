@@ -78,28 +78,28 @@ jQuery(	function() {
 	if ( jQuery( '#sexy-login-recaptcha' ).css( 'display' ) == 'block' )
 		slTabChange( 'login' );
 	
-	jQuery('a[name=sl-tab-login]').click( function(e) {
+	jQuery('#sexy-login-wrap a[name=sl-tab-login]').click( function(e) {
 		
 		e.preventDefault();
 		slTabChange( 'login' );
 		
 	});
 	
-	jQuery('a[name=sl-tab-lostpwd]').click( function(e) {
+	jQuery('#sexy-login-wrap a[name=sl-tab-lostpwd]').click( function(e) {
 		
 		e.preventDefault();
 		slTabChange( 'lostpwd' );
 		
 	});
 	
-	jQuery('a[name=sl-tab-registration]').click( function(e) {
+	jQuery('#sexy-login-wrap a[name=sl-tab-registration]').click( function(e) {
 		
 		e.preventDefault();
 		slTabChange( 'registration' );
 		
 	});
 
-	jQuery('.sexy_login_widget #sl-login-form').submit( function( e ) {
+	jQuery('#sexy-login-wrap #sl-login-form').submit( function( e ) {
 				
 		e.preventDefault();
 		
@@ -158,7 +158,7 @@ jQuery(	function() {
 	
 	}); // END sl-login-form submit.
 	
-	jQuery('.sexy_login_widget #sl-registration-form').submit( function( e ) {
+	jQuery('#sexy-login-wrap #sl-registration-form').submit( function( e ) {
 				
 		e.preventDefault();
 		
@@ -209,7 +209,7 @@ jQuery(	function() {
 	
 	}); // END sl-registration-form
 	
-	jQuery('.sexy_login_widget #sl-lostpwd-form').submit( function( e ) {
+	jQuery('#sexy-login-wrap  #sl-lostpwd-form').submit( function( e ) {
 				
 		e.preventDefault();
 		

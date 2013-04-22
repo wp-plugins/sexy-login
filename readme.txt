@@ -4,7 +4,7 @@ Donate link: http://optimaldevs.com/
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.2
+Stable tag: 2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -61,6 +61,9 @@ Check that you've correctly entered both private and public keys in the "Sexy Lo
 That's one of the problems of cache systems. We can't modify third party plugins.
 
 == Changelog ==
+
+= 2.3 =
+* Javascript improved to support wrong themes. ".sexy_login_widget" is no longer used as a handler, instead the plugin uses "#sexy-login-wrap".
 
 = 2.2 =
 * Registration form is optional.

@@ -3,7 +3,7 @@
 Plugin Name: Sexy Login
 Plugin URI: http://wordpress.org/extend/plugins/sexy-login/
 Description: The sexiest login widget for Wordpress!
-Version: 2.2
+Version: 2.3
 Author: OptimalDevs
 Author URI: http://optimaldevs.com/
 */
