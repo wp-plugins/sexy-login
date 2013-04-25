@@ -63,7 +63,6 @@ function slBlockTab( errorDiv, wrapDiv ) {
 			textAlign:  'center',
 			color:      '#000',
 			border:     'none',
-			backgroundColor:'none',
 			cursor:     'wait'
 		}
 	});	
