@@ -55,6 +55,9 @@ class Sexy_Login_Attempts {
 
 		global $wpdb;
 		
+		$query	= '';
+		$format	= '';
+		
 		if ( $all ) {
 			$query = 'DELETE FROM ' . SL_LOGIN_TABLE . ' WHERE DATE_ADD( last_date , INTERVAL %d MINUTE ) < NOW()';
 			$format = array( SL_LOGIN_ATTEMPTS_LAPSE );

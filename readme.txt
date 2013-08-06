@@ -71,6 +71,7 @@ If you are using another plugin that also uses "reCAPTCHA" it is possible that o
 * Fixed javascript error: "blockUI requires jQuery v1.3 or later! You are using v1.10.2".
 * Updated blockUI library.
 * Fixed problems when user tries to Log on.
+* Fixed a few minor bugs.
 
 = 2.4 =
 * Fixed javascript error related to the style that produced an error in IE8 and below.

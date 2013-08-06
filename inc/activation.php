@@ -37,17 +37,14 @@ function sl_configure_database() {
 	
 	global $wpdb;
 	
-	if( $wpdb->get_var( 'SHOW TABLES LIKE "' . SL_LOGIN_TABLE . '"' ) != SL_LOGIN_TABLE ) {
-	
-		$create_table	= 'CREATE TABLE ' . SL_LOGIN_TABLE . ' (
-			ip varchar(255) NOT NULL,
-			last_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-			login_attempts tinyint DEFAULT 1,
-			PRIMARY KEY  (ip)
-		);';
-		$wpdb->query( $create_table );
+	$wpdb->query( '	
+		CREATE TABLE IF NOT EXISTS ' . SL_LOGIN_TABLE . ' (
+		ip varchar(255) NOT NULL,
+		last_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		login_attempts tinyint DEFAULT 1,
+		PRIMARY KEY  (ip)
+		);'
+	);
 		
-	}
-	
 }
 ?>
