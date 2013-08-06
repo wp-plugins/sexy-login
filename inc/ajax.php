@@ -50,8 +50,8 @@ function sexy_login_ajax() {
 			$attempts->delete_attempts();
 			
 		} else {
-			$to_search = array( '?', '¿' );
-			$result['error']	= ( $login->errors ) ? str_replace( $to_search, '', eregi_replace( "<a[^>]*>.*</a>", '', $login->get_error_message() ) ) : '<strong>ERROR</strong>: ' . esc_html__( 'Please enter your username and password to login.', 'sl-domain' );
+		
+			$result['error']	= ( $login->errors ) ? strip_tags( $login->get_error_message() ) : '<strong>ERROR</strong>: ' . esc_html__( 'Please enter your username and password to login.', 'sl-domain' );
 			$result['captcha']	= ( $sl_options['enable_captcha'] && $attempts->update_attempts() >= SL_LOGIN_ATTEMPTS ) ? true : false;
 		
 		}

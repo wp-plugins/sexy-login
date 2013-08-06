@@ -3,8 +3,8 @@ Contributors: OptimalDevs, Alejandro Galvez, Andy Hernandez
 Donate link: http://optimaldevs.com/
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 2.4
+Tested up to: 3.6
+Stable tag: 2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,10 +60,20 @@ Check that you've correctly entered both private and public keys in the "Sexy Lo
 
 That's one of the problems of cache systems. We can't modify third party plugins.
 
+= I have problems with Captcha.  =
+
+If you are using another plugin that also uses "reCAPTCHA" it is possible that one of the two "reCAPTCHA" doesn't work correctly. The reason is that "reCAPTCHA" only allows one instance on each page.
+
 == Changelog ==
 
+= 2.5 =
+* Now it's compatible with WordPres 3.6.
+* Fixed javascript error: "blockUI requires jQuery v1.3 or later! You are using v1.10.2".
+* Updated blockUI library.
+* Fixed problems when user tries to Log on.
+
 = 2.4 =
-* Fixed javascript error related with style. Now it's compatible with IE8 and lower versions.
+* Fixed javascript error related to the style that produced an error in IE8 and below.
 
 = 2.3 =
 * Javascript improved to support wrong themes. ".sexy_login_widget" is no longer used as a handler, instead the plugin uses "#sexy-login-wrap".
