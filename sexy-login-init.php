@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/sexy-login/
 Description: The sexiest login widget for Wordpress!
 Version: 2.6
 Author: OptimalDevs
-Author URI: http://optimaldevs.com/
+Author URI: https://profiles.wordpress.org/optimaldevs/
 */
 
 require_once( 'sl-config.php' );
