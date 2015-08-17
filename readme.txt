@@ -1,6 +1,5 @@
 ﻿=== Plugin Name ===
 Contributors: OptimalDevs, Alejandro Galvez, Andy Hernandez
-Donate link: http://optimaldevs.com/
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
 Tested up to: 4.2.4
