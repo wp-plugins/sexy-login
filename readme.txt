@@ -3,8 +3,8 @@ Contributors: OptimalDevs, Alejandro Galvez, Andy Hernandez
 Donate link: http://optimaldevs.com/
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 2.5
+Tested up to: 4.2.4
+Stable tag: 2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,10 +31,6 @@ Features:
 * Option to show or hide avatar and change it size.
 * It's responsive!
 * Languages: the same of your WordPress! (It’s multi-language). English or spanish in back-end.
-
-[Try Demo](http://optimaldevs.com/demo/ "Try Sexy Login demo.")
-
-Note: A new pro version is coming stay tune in http://optimaldevs.com/
 
 == Installation ==
 
@@ -65,6 +61,11 @@ That's one of the problems of cache systems. We can't modify third party plugins
 If you are using another plugin that also uses "reCAPTCHA" it is possible that one of the two "reCAPTCHA" doesn't work correctly. The reason is that "reCAPTCHA" only allows one instance on each page.
 
 == Changelog ==
+
+= 2.6 =
+* Tested with WordPres 4.2.4.
+* Fixed bug related with distorted avatar when using buddyPress.
+* Fixed a few minor bugs.
 
 = 2.5 =
 * Now it's compatible with WordPres 3.6.
