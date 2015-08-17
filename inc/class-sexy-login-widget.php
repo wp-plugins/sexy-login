@@ -1,7 +1,7 @@
 <?php
 class Sexy_Login_Widget extends WP_Widget {
 	
-	private static $instance;
+	private $sl_instance;
 	
 	function Sexy_Login_Widget() {
 
@@ -11,8 +11,8 @@ class Sexy_Login_Widget extends WP_Widget {
 	
 	function widget( $args, $instance ) {
 	
-		if ( empty( $this->instance ) )
-			$this->instance = true;
+		if ( empty( $this->sl_instance ) )
+			$this->sl_instance = true;
 		else
 			return;
 			
@@ -53,9 +53,17 @@ class Sexy_Login_Widget extends WP_Widget {
 			<div id="sexy-login-user" > 
 				<?php
 					
-				if ( $sl_options['show_avatar'] ) 	
-					echo get_avatar( $current_user->ID, $sl_options['avatar_size'] );
-				
+				if ( $sl_options['show_avatar'] ) {
+					
+					if( function_exists( 'bp_core_fetch_avatar' ) ) {
+						echo bp_core_fetch_avatar( array( 'item_id' => $current_user->ID, 'type' => 'full' ) );
+					}
+					else {
+						echo get_avatar( $current_user->ID, $sl_options['avatar_size'] );
+					}
+					
+				}
+
 				if ( $sl_options['show_nickname'] ) 
 					echo '<h1>' . $current_user->nickname . '</h1>';
 					
