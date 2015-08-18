@@ -5,7 +5,7 @@ class Sexy_Login_Widget extends WP_Widget {
 	
 	function Sexy_Login_Widget() {
 
-		$this->WP_Widget( 'sexy_login_widget', 'Sexy Login', array( 'classname' => 'sexy_login_widget', 'description' => 'A simple widget for login in Wordpress.' ) );
+		$this->__construct( 'sexy_login_widget', 'Sexy Login', array( 'classname' => '', 'description' => 'A simple widget for login in Wordpress.' ) );
 		
 	}
 	

@@ -2,7 +2,7 @@
 Contributors: OptimalDevs, Alejandro Galvez, Andy Hernandez
 Tags: login, register, sexy, ajax, authentication, captcha, sidebar, widget, user, ssl, secury, admin bar, ReCaptcha, cross browser, lost password
 Requires at least: 3.0
-Tested up to: 4.2.4
+Tested up to: 4.3
 Stable tag: 2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -62,7 +62,7 @@ If you are using another plugin that also uses "reCAPTCHA" it is possible that o
 == Changelog ==
 
 = 2.6 =
-* Tested with WordPres 4.2.4.
+* Tested with WordPres 4.3.
 * Fixed bug related with distorted avatar when using buddyPress.
 * Fixed a few minor bugs.
 
